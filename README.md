@@ -16,3 +16,11 @@ Building and running tests:
 Viewing test report: 
 1. CLI using gradle ./gradlew allureServe
 2. Intelij using TestNG report - test-output folder 
+
+Curl notes:
+- By default,curl requests the URL using the GET method. 
+- To request the specific URL using the POST,DELETE or PUT methods, we have to use the-X right after the curl command
+curl -X POST 
+- Using -X switch will show only message body (the HTML content).
+- Using -iX switch will show us a response header and message body
+- Using -i switch will just show us only the response header

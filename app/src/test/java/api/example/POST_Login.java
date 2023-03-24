@@ -12,7 +12,7 @@ public class POST_Login {
     private String baseUrl = "https://reqres.in/api";
 
     @Test(description ="Login unsuccessful: error missing password")
-    public void testPOST() {
+    public void testPOSTLogin() {
         LOG.info("Step - 1 : Send POST Request");
         String url = baseUrl+"/login";
         String body = "{\"email\": \"peter@klaven\"}";

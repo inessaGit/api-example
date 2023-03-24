@@ -12,7 +12,7 @@ public class POST_Login_Success {
     private String baseUrl = "https://reqres.in/api";
 
     @Test(description ="Login successful:token generated")
-    public void testPOST() {
+    public void testPOSTLoginSuccess() {
         LOG.info("Step - 1 : Send POST Request");
         String url = baseUrl+"/login";
         String body = "{\"email\": \"eve.holt@reqres.in\",\"password\": \"cityslicka\"}";

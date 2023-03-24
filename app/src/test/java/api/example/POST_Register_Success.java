@@ -12,7 +12,7 @@ public class POST_Register_Success {
     private String baseUrl = "https://reqres.in/api";
 
     @Test(description ="Register successful: id and token generated")
-    public void testPOST() {
+    public void testPOSTRegisterSuccess() {
         LOG.info("Step - 1 : Send POST Request");
         String url = baseUrl+"/register";
         String body = "{\"email\": \"eve.holt@reqres.in\",\"password\": \"pistol\"}";

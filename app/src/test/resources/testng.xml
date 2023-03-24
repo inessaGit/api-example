@@ -19,4 +19,10 @@
 			</class>
 		</classes>
 	</test>
+	<test name="Allure Test">
+		<classes>
+			<class name="api.example.temp.AllureReportTest">
+			</class>
+		</classes>
+	</test>
 </suite>  

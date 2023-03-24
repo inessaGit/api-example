@@ -12,7 +12,7 @@ public class POST_Create_User {
     private String baseUrl = "https://reqres.in/api";
 
     @Test(description ="POST Create user: 201")
-    public void testPOST() {
+    public void testPOSTCreateUser() {
         LOG.info("Step - 1 : Send POST Request");
         String url = baseUrl+"/users";
         String body = "{\"name\": \"morpheus\",\"job\": \"leader\"}";

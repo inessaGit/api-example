@@ -12,7 +12,7 @@ public class POST_Register {
     private String baseUrl = "https://reqres.in/api";
 
     @Test(description ="Register unsuccessful: error missing password")
-    public void testPOST() {
+    public void testPOSTRegister() {
         LOG.info("Step - 1 : Send POST Request");
         String url = baseUrl+"/register";
         String body = "{\"email\": \"sydney@fife\"}";
