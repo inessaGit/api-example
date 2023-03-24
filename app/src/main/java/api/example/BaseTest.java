@@ -24,7 +24,7 @@ public class BaseTest {
     }
 
     @Step("{0}")
-    public void logToReport(String message) {
+    public static void logToAllureReport(String message) {
         Reporter.log(message); //or System.out.println(message);
     }
     @BeforeMethod
