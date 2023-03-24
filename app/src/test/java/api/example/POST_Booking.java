@@ -45,7 +45,7 @@ public class POST_Booking {
 
         response = RestAssured.given()
                 .spec(requestSpec)
-                .body(booking).post(baseUri);
+                .body(booking).post(baseUri).andReturn();
         responseBody = response.getBody();
     }
 
