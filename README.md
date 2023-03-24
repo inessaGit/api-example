@@ -6,11 +6,10 @@ This is repository of basic REST API testing framework.
 
 The public API used for this example is - [ReqresIn](https://reqres.in/api) and [Restful-Booker](https://restful-booker.herokuapp.com)
 
-
 This framework is developed using [Rest-Assured library](https://rest-assured.io/)
 
-
 Test Reporting is by Allure and TestNG
+
 Build tool - [Gradle](https://gradle.org/)
 
 JSONPath is a query language that helps us in parsing the JSON data, which can be used for validation or assertions in a test.
