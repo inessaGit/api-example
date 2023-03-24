@@ -1,0 +1,37 @@
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build
+
+#Ignore allure-report output
+allure-report
+allure-results
+=======
+.gradle
+/build/
+
+# Ignore Gradle GUI config
+gradle-app.setting
+
+# Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
+!gradle-wrapper.jar
+
+*.log
+.DS_Store
+
+# Cache of project
+.gradletasknamecache
+
+# User-specific stuff: https://www.toptal.com/developers/gitignore
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries
+.idea/vcs.xml
+.idea/jsLibraryMappings.xml
+# Gradle:
+.idea/gradle.xml
+.idea/libraries
+
+# # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
+# gradle/wrapper/gradle-wrapper.properties

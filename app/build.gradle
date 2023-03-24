@@ -1,0 +1,44 @@
+plugins {
+    id 'java'
+    id 'idea'
+    id 'io.qameta.allure' version '2.11.2'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+// https://mvnrepository.com/artifact/io.rest-assured/rest-assured
+    runtimeOnly group: 'ch.qos.logback', name: 'logback-classic', version: '1.4.5'
+    implementation group: 'io.rest-assured', name: 'rest-assured', version: '5.3.0'
+    implementation group: 'org.testng', name: 'testng', version: '7.5' //used to be named compile
+    implementation group: 'org.asynchttpclient', name: 'async-http-client', version: '2.0.3'
+
+// https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.14.2'
+
+    implementation 'io.qameta.allure:allure-rest-assured:2.21.0'
+    implementation 'com.jayway.jsonpath:json-path:2.4.0'
+    implementation 'org.apache.commons:commons-lang3:3.0'
+    implementation 'org.springframework.boot:spring-boot-starter-web:2.5.0'
+    implementation 'org.springframework.boot:spring-boot-starter-security:2.5.0'
+    implementation 'org.projectlombok:lombok:1.18.12'
+
+}
+//https://docs.gradle.org/current/dsl/org.gradle.api.tasks.Delete.html
+task deleteLogsScreenshots(type:Delete){
+    delete "allure-results", "logs", "screenshots", "build", "test-output"
+}
+test {
+    useTestNG() {
+        suites "src/test/resources/${System.getProperty('suiteXmlFile', 'testng.xml')}"
+    }
+    testLogging.showStandardStreams = true
+    systemProperties System.properties
+    finalizedBy 'downloadAllure', 'allureReport'
+}
+
+allure {
+    version = '2.21.0'
+}
