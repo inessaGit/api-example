@@ -1,6 +1,7 @@
 package api.example;
 
 import io.qameta.allure.Step;
+import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
@@ -19,7 +20,8 @@ public class BaseTest {
     private static RequestSpecification requestSpec;
     private static ResponseSpecification responseSpec;
     @BeforeSuite
-    public void setBaseURI(){
+    public void setBaseURI(){ //https://github.com/rest-assured/rest-assured/wiki/Usage#response-logging
+        RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
 
     }
 

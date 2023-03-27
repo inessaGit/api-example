@@ -40,6 +40,7 @@ test {
     testLogging.showStandardStreams = true
     systemProperties System.properties
     finalizedBy 'downloadAllure', 'allureReport'
+
 }
 
 allure {

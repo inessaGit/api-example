@@ -1,9 +1,9 @@
-package api.example;
+package api.example.booking;
 
+import api.example.BaseTest;
 import api.example.model.BookingDates;
 import api.example.model.BookingDetails;
 import io.qameta.allure.Description;
-import io.qameta.allure.Step;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.response.Response;
@@ -12,7 +12,6 @@ import io.restassured.specification.RequestSpecification;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.Assert;
-import org.testng.Reporter;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
