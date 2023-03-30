@@ -2,15 +2,21 @@ package api.example.booking;
 
 import io.qameta.allure.Description;
 import io.restassured.RestAssured;
+import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.response.ResponseBody;
 import io.restassured.specification.RequestSpecification;
 import org.hamcrest.Matcher;
+import org.hamcrest.MatcherAssert;
 import org.hamcrest.Matchers;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
+import java.util.Arrays;
+import java.util.List;
 
 /*
 given().
@@ -23,7 +29,6 @@ given().
  */
 
 public class GET_BookingIds {
-
     private Logger LOG = LoggerFactory.getLogger(GET_BookingIds.class);
     private RequestSpecification requestSpec;
     private Response response;
@@ -62,21 +67,21 @@ public class GET_BookingIds {
                 .when().get(baseUri)
                 .then().statusCode(200);
     }
-    @Test  (description = "log rest assured GET request  ")
+    @Test  (description = "Assert result set has specific booking id retrieved on GET")
     public void logWithRestAssured() {
-        RestAssured.get(baseUri).then().log().body();
-        RestAssured.get(baseUri).then().log().ifError();
-        RestAssured.get(baseUri).then().log().all(); //including status line, headers and cookies
+        JsonPath jsonPath = responseBody.jsonPath();
+        //jsonPath.prettyPrint();
+        List<Integer> bookingid=jsonPath.get("bookingid");
+        System.out.println(bookingid); //array of ints
 
-        RestAssured.get(baseUri).then().log().status();
-        RestAssured.get(baseUri).then().log().headers();
-        RestAssured.get(baseUri).then().log().cookies();
-        RestAssured.get(baseUri).then().log().ifStatusCodeIsEqualTo(302);
-        RestAssured.get(baseUri).then().log().ifValidationFails();
+        //Mathcers.contains (4197) fail because it is not exact match for all items
+        MatcherAssert.assertThat(bookingid,Matchers.hasItem(4197));
+    }
 
-
-
-
-
+    @Test(description = "Assert bookings ids retrieved on GET")
+    public void testBookingIdsNotEmpty(){
+        JsonPath jsonPath = responseBody.jsonPath();
+        List<Integer> bookingIds =jsonPath.get("bookingid");
+        MatcherAssert.assertThat(bookingIds,Matchers.not(Matchers.empty()));
     }
 }

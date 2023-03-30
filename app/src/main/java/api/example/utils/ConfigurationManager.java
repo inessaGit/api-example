@@ -1,6 +1,5 @@
 package api.example.utils;
 
-import api.example.BaseTest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

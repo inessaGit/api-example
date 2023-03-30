@@ -34,14 +34,20 @@ public class GET_Booking {
                 .build();
         response = RestAssured.given()
                 .spec(requestSpec)
-                .get("/1").andReturn();
+                .get("/2").andReturn();
         responseBody = response.getBody();
+        System.out.println(responseBody.prettyPrint());
     }
     @Test(description = "send get request without specifying headers; assert status code 200")
-    public void sendGetRequest() {
-        //curl -i https://restful-booker.herokuapp.com/booking/1
+    public void sendGetRequestResponse200() {
+        //curl -i https://restful-booker.herokuapp.com/booking/2
         //HttpStatus.OK.value()
-        RestAssured.when().get(baseUri+"/1").then().assertThat().statusCode(200);
+        RestAssured.when().get(baseUri+"/2").then().assertThat().statusCode(200);
+    }
+
+    @Test(description = "send get request without specifying headers; assert status code 404")
+    public void sendGetRequestResponse404() {
+        RestAssured.when().get(baseUri+"/30320230").then().assertThat().statusCode(404);
     }
     @Test(description = "send get request with headers;")
     public void sendGetRequest2() {
@@ -58,6 +64,6 @@ public class GET_Booking {
     @Description("verify response") //allure report
     @Test(description="test get booking by id ")
     public void testGetById(){
-       // response.then().body("bookingdates.checkin", Matchers.notNullValue());
+       response.then().assertThat().body("bookingdates.checkin", Matchers.notNullValue());
     }
 }

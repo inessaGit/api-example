@@ -15,19 +15,23 @@ import org.testng.annotations.BeforeSuite;
 
 import java.lang.reflect.Method;
 
-public class BaseTest {
-    private static final Logger LOG = LoggerFactory.getLogger(BaseTest.class);
-    private static RequestSpecification requestSpec;
-    private static ResponseSpecification responseSpec;
+public abstract class BaseTestBooking {
+    private static final Logger LOG = LoggerFactory.getLogger(BaseTestBooking.class);
+    protected static  RequestSpecification requestSpec;
+    protected static ResponseSpecification responseSpec;
+
+    private String baseUriBooking ="https://restful-booker.herokuapp.com";
     @BeforeSuite
     public void setBaseURI(){ //https://github.com/rest-assured/rest-assured/wiki/Usage#response-logging
         RestAssured.enableLoggingOfRequestAndResponseIfValidationFails();
-
+        requestSpec = new RequestSpecBuilder().
+                setBaseUri(baseUriBooking).
+                build();
     }
 
     @Step("{0}")
     public static void logToAllureReport(String message) {
-        Reporter.log(message); //or System.out.println(message);
+        Reporter.log(message);
     }
     @BeforeMethod
     public void setUp(Method method) {
