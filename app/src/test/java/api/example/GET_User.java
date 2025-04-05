@@ -22,7 +22,6 @@ public class GET_User {
 
         LOG.info("Step - 3 : Assert StatusCode = 200");
         Assert.assertEquals(response.getStatusCode(), 200, "http status code");
-
         LOG.info("Step - 4 : Verify that the response contains id = 2");
         Integer userId = response.getBody().jsonPath().getInt("data.id");
         Assert.assertTrue(userId==2);
